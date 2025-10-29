@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<!--头部信息-->
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!--title keywords description 请改为自己的-->
+<title>导航页</title>
+<meta name="keywords" content="yangzhe,yangzhe导航页,个人导航,网址"/>
+<meta name="description" content="yangzhe的个人导航页"/>
+
+<!--网站favicon可以没有或者改为自己的-->
+<link rel="shortcut icon" type="image/x-icon" href="./img/云谷内网.png"/>
+
+<!--CSS 若不需要变动样式不用改-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/zui/1.8.1/css/zui.min.css" rel="stylesheet" type="text/css"/>
+<link href="./goodweb.css" rel="stylesheet" type="text/css"/>
+</head>
+<body id="nav_body">
+
+<header>
+<div class="main">
+    <h1 class="logo">
+    <a href="goodweb.html">
+    <img src="./img/云谷内网.png">
+    <span>导航页</span>
+    </a>
+    </h1>
+    <!--顶部导航条-->
+    <nav class="nav">
+    <ul>
+        <li><a href="https://chat.auyunn.cn/">NextChat</a></li>
+        <li><a href="https://tdchatvip.us/">TDChat在线版</a></li>
+        <li><a href="https://www.huaweicloud.com/">华为云</a></li>
+        <li><a href="https://nav.linux.do/">linuxdo导航</a></li>
+    </ul>
+    </nav>
+    <!--便携设备右上角菜单-->
+    <button class="nav-btn visible-xs visible-sm"><span class="icon-line top"></span><span class="icon-line middle"></span><span class="icon-line bottom"></span>
+    </button>
+</div>
+</header>
+<div id="content">
+    <!--左侧目录，导航跳转-->
+    <div class="left-bar">
+        <div class="header">
+            <h2>目录</h2>
+        </div>
+        <div class="menu" id="menu">
+            <ul class="scrollcontent">
+                <!--左侧目录，按照需要修改和添加，参考已有的修改名称和href-->
+                <li><a href="#row-1">设备管理</a></li>
+                <li><a href="#row-2">休闲娱乐</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--内容-->
+    <div class="main">
+        <div class="container content-box">
+            <!--搜索栏-->
+            <section class="sousuo">
+            <div class="search">
+                <div class="search-box">
+                    <button class="search-engine-name" id="search-engine-name">谷歌搜索</button>
+                    <input type="text" id="txt" class="search-input" placeholder="选择引擎，输入关键字，回车/Enter搜索"/>
+                    <button class="search-btn" id="search-btn">搜索</button>
+                </div>
+                <!-- 搜索引擎 -->
+                <div class="search-engine">
+                    <div class="search-engine-head">
+                        <strong class="search-engine-tit">选择您的默认搜索引擎：</strong>
+                    </div>
+                    <ul class="search-engine-list">
+                    </ul>
+                </div>
+            </div>
+            </section>
+            <!--导航分类范例1，请根据自己的需求进行修改-->
+            <section class="item card-box" id="row-1">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="item-tit">
+                        <strong>设备管理</strong>
+                    </div>
+                    <!--获取内容列表-->
+                    <div class="clearfix two-list-box">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://frp-now.com:59002/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">Jellyfin</div>
+                                        <div class="card-desc">北京的Jellyfin</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/Jellyfin.png" alt="Jellyfin"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://1.94.219.103:6880" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">aria2-pro</div>
+                                        <div class="card-desc">阿里云的aria2-pro</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/aria2-copy.png" alt="aria2-pro"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://1.94.219.103:27001/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">frp</div>
+                                        <div class="card-desc">华为云的frp</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/Frps.png" alt="aria2-pro"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://1871441r7i.iok.la:18088" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">AX-3600</div>
+                                        <div class="card-desc">家里的小米路由器</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/路由器.png" alt="AX-3600"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://1871441r7i.iok.la:8088" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">京东云</div>
+                                        <div class="card-desc">家里的京东云</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/云厂商-京东云_24.png" alt="京东云"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://auyunn.cn:5001/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">群晖</div>
+                                        <div class="card-desc">外网的群晖</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/存储-群晖.png" alt="群晖"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://yangzhe.cn6.quickconnect.cn/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">群晖</div>
+                                        <div class="card-desc">quickconnect的群晖</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/存储-群晖.png" alt="群晖"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://1.94.219.103:18092/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">百度云盘</div>
+                                        <div class="card-desc">群晖的百度云盘</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/baiduwangpan.png" style="height: 65px;" alt="百度云盘"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+			<!--范例二 导航内容参考修改，如果需要更多的分类，拷贝整个section标签进行修改-->
+            <section class="item card-box" id="row-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="item-tit">
+                        <strong>休闲娱乐</strong>
+                    </div>
+                    <!--获取内容列表-->
+                    <div class="clearfix ">
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://192.168.1.5:8096/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">Jellyfin</div>
+                                        <div class="card-desc">内网的Jelly</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/Jellyfin.png" alt="Jellyfin"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://192.168.31.1/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">AX-3600</div>
+                                        <div class="card-desc">内网的小米路由器</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/路由器.png" alt="AX-3600"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://192.168.31.5:5001/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">群晖</div>
+                                        <div class="card-desc">内网的群晖</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/存储-群晖.png" alt="群晖"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="http://192.168.31.1:9999/ui" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">shellClash</div>
+                                        <div class="card-desc">内网的shellClash管理面板</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/clash.png" alt="shellClash"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://auyun.cc:18081/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">Bitwarden</div>
+                                        <div class="card-desc">内网的Bitwarden</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/Bitwarden_B.png" alt="Bitwarden"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://www.huya.com/lpl" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">虎牙直播</div>
+                                        <div class="card-desc">虎牙直播-LPL</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/虎牙直播.png" alt="虎牙直播"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://www.youtube.com/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">youtube</div>
+                                        <div class="card-desc">youtube</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/youtube.png" alt="youtube"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://www.bilibili.com/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">bilibili</div>
+                                        <div class="card-desc">bilibili</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/bilibili.png" alt="bilibili"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://www.v2ex.com/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">v2ex</div>
+                                        <div class="card-desc">v2ex</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/v2ex.png" alt="v2ex"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-xs-6">
+                            <a href="https://linux.do/" class="card-link">
+                                <div class="card-content">
+                                    <div class="text-content">
+                                        <div class="card-tit">linux.do</div>
+                                        <div class="card-desc">linux.do</div>
+                                    </div>
+                                    <div class="image-content">
+                                        <img src="./img/linuxdo.png" alt="linux.do"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </section>
+            <!--页脚-->
+            <footer class="footer">
+            <div class="container">
+                <div class="rwo">
+                    <div class="col-md-12">
+                        
+                        <!--代码源自小呆导航的开源代码，遵循MIT协议，此处保留源代码的声明-->
+                        <p>
+                            Copyright © 2024 by小呆导航（webjike.com）
+                        </p>
+                    </div>
+                </div>
+            </div>
+            </footer>
+        </div>
+        <!--内容区域-->
+    </div>
+    <div id="get-top" title="回到顶部">
+        <i class="icon icon-arrow-up"></i>
+    </div>
+    
+    <!-- jQuery (ZUI中的Javascript组件依赖于jQuery) -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    
+<script>
+window.onscroll = function(){
+//回到顶部
+var sllTop = document.documentElement.scrollTop||document.body.scrollTop;
+if(sllTop>240){
+  $('#get-top').css('display','block')
+}else{
+  $('#get-top').css('display','none')
+}
+}
+$('#get-top').click(function(){ 
+  $('body,html').animate({
+    scrollTop: 0
+  }, 800);//点击回到顶部按钮，数字越小越快
+})
+//判断用户使用的设备
+var deviceVal  = browserRedirect();
+function browserRedirect() {
+  var sUserAgent = navigator.userAgent.toLowerCase();
+  var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+  var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+  var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+  var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+  var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+  var bIsAndroid = sUserAgent.match(/android/i) == "android";
+  var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+  var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+  if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+    return 'phone';
+  } else {
+    return 'pc';
+  }
+}
+  $('.nav-btn').on('click', function () {
+    $('.nav').toggleClass('showNav');
+    $(this).toggleClass('animated2');
+  });
+ 
+// 默认搜索引擎的内容，如果界面修改了需要同步修改
+var thisSearch = 'https://www.google.com/search?q=';
+
+$('#txt').keydown(function(ev){
+    // 回车键的处理
+    if(ev.keyCode==13){
+        window.open(thisSearch + $('#txt').val())
+        // $('#txt').val('');
+        $('#box ul').html('')
+    }
+})
+$(function(){
+  // 搜索引擎列表，样式一行五个内容，自动换行
+  var search = {
+    data: [{
+      name: 'Yandex',
+      url: 'https://yandex.com/search/?text='
+    }, {
+      name: '百度',
+      url: 'https://www.baidu.com/s?wd='
+    }, {
+      name: '谷歌',
+      url: 'https://www.google.com/search?q='
+    }, {
+      name: '必应',
+      url: 'https://cn.bing.com/search?q='
+    }, {
+      name: '好搜',
+      url: 'https://www.so.com/s?q='
+    }, {
+      name: '搜狗',
+      url: 'https://www.sogou.com/web?query='
+    }, {
+      name: '淘宝',
+      url: 'https://s.taobao.com/search?q='
+    }, {
+      name: '京东',
+      url: 'http://search.jd.com/Search?keyword='
+    }, {
+      name: '天猫',
+      url: 'https://list.tmall.com/search_product.htm?q='
+    }, {
+      name: '1688',
+      url: 'https://s.1688.com/selloffer/offer_search.htm?keywords='
+    }, {
+      name: '知乎',
+      url: 'https://www.zhihu.com/search?type=content&q='
+    }, {
+      name: '微博',
+      url: 'https://s.weibo.com/weibo/'
+    }, {
+      name: 'Bilibili',
+      url: 'http://search.bilibili.com/all?keyword='
+    }, {
+      name: '豆瓣',
+      url: 'https://www.douban.com/search?source=suggest&q='
+    }, {
+      name: '优酷',
+      url: 'https://so.youku.com/search_video/q_'
+    }, {
+      name: 'GitHub',
+      url: 'https://github.com/search?q='
+    }]
+  }
+  for(var i = 0; i < search.data.length; i++){
+    var addList = '<li>' + search.data[i].name + '</li>'
+    $('.search-engine-list').append(addList);
+  }
+  $('.search-engine-name, .search-engine').hover(function() {
+    $('.search-engine').css('display', 'block')
+  }, function() {
+    $('.search-engine').css('display', 'none')
+  });
+  $('.search-engine-list li').click(function() {
+    var _index = $(this).index();
+    var searchNameBtn = document.getElementById("search-engine-name");
+    searchNameBtn.innerHTML = search.data[_index].name;
+    thisSearch = search.data[_index].url;
+    $('.search-engine').css('display', 'none')
+  })
+})
+$("#search-btn").click(function(){
+  var textValue = $('#txt').val();
+  if(textValue != ''){
+    window.open(thisSearch + textValue)
+  }
+});
+</script>
+</div>
+</body>
+</html>
