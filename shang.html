@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>成长型人格熵值评估</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            min-height: 80vh;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 22px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 13px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .content-area {
+            padding: 20px;
+        }
+
+        /* 开始页面样式 */
+        .intro-section {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border: 2px solid #e8e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .intro-title {
+            font-size: 18px;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .intro-list {
+            text-align: left;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        .intro-list li {
+            margin-bottom: 8px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* 进度条 */
+        .progress-section {
+            padding: 15px 20px 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        /* 问题样式 */
+        .question-card {
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .question-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .question-text {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        /* 选项样式 */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .option-item {
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+
+        .option-item:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .option-item.selected {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .option-radio {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            margin-right: 14px;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .option-item.selected .option-radio {
+            border-color: white;
+            background: white;
+        }
+
+        .option-item.selected .option-radio::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        /* 导航按钮 */
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn-secondary {
+            flex: 1;
+            padding: 14px;
+            background: #f5f5f5;
+            color: #333;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #ebebeb;
+        }
+
+        .btn-secondary:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* 结果页面样式 */
+        .result-section {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .result-title {
+            font-size: 20px;
+            color: #667eea;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .score-display {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .score-number {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-label {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .score-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .badge-low {
+            background: #fee;
+            color: #c33;
+        }
+
+        .badge-medium {
+            background: #fef5e7;
+            color: #f39c12;
+        }
+
+        .badge-high {
+            background: #e8f8f5;
+            color: #27ae60;
+        }
+
+        /* 维度卡片 */
+        .dimension-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .dimension-card {
+            background: #f8f9ff;
+            padding: 18px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e8e8f0;
+        }
+
+        .dimension-card.positive {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #e8f8f5 0%, #fff 100%);
+        }
+
+        .dimension-card.negative {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #fee 0%, #fff 100%);
+        }
+
+        .dimension-title {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .dimension-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin: 8px 0;
+        }
+
+        .dimension-badge {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 10px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .badge-green {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-red {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        /* 子维度列表 */
+        .subdimensions-section {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .subdimensions-title {
+            font-size: 16px;
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .subdimension-item {
+            background: white;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e8e8f0;
+        }
+
+        .subdimension-name {
+            font-size: 14px;
+            color: #333;
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .subdimension-score {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* 雷达图 */
+        .chart-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            padding: 25px 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            text-align: center;
+            border: 2px solid #e8e8f0;
+        }
+
+        .chart-title {
+            font-size: 16px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .radar-canvas {
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* 人格类型 */
+        .personality-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 25px;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .personality-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .personality-name {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .personality-desc {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* 页面切换 */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .header p {
+                font-size: 12px;
+            }
+
+            .content-area {
+                padding: 15px;
+            }
+
+            .question-text {
+                font-size: 15px;
+            }
+
+            .option-item {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+
+            .dimension-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .score-number {
+                font-size: 42px;
+            }
+
+            .personality-name {
+                font-size: 28px;
+            }
+
+            .subdimension-name {
+                font-size: 13px;
+            }
+        }
+
+        /* 优化触摸体验 */
+        @media (hover: none) {
+            .option-item:active {
+                transform: scale(0.98);
+            }
+
+            .btn-primary:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 开始页面 -->
+        <div class="page active" id="startPage">
+            <div class="header">
+                <h1>成长型人格熵值评估</h1>
+                <p>探索你的思维模式与做功倾向</p>
+            </div>
+            <div class="content-area">
+                <div class="intro-section">
+                    <div class="intro-card">
+                        <div class="intro-title">✨ 评估说明</div>
+                        <ul class="intro-list">
+                            <li>✅ 本评估包含32道精心设计的题目</li>
+                            <li>✅ 答案没有对错，请选择最符合真实感受的选项</li>
+                            <li>✅ 完成后将获得详细的个人分析报告</li>
+                            <li>✅ 评估耗时约5-8分钟</li>
+                            <li>✅ 建议在安静环境中独立完成</li>
+                        </ul>
+                    </div>
+                    <button class="btn-primary" onclick="startAssessment()">开始评估 →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评估页面 -->
+        <div class="page" id="assessmentPage">
+            <div class="header">
+                <h1>成长型人格熵值评估</h1>
+                <p>请选择最符合你真实感受的选项</p>
+            </div>
+            
+            <div class="progress-section">
+                <div class="progress-header">
+                    <span id="progressText">题目 1 / 32</span>
+                    <span id="progressPercent">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="question-card" id="questionCard">
+                    <!-- 问题动态生成 -->
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>上一题</button>
+                    <button class="btn-primary" id="nextBtn" onclick="nextQuestion()" style="flex: 2;">下一题</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 结果页面 -->
+        <div class="page result-section" id="resultsPage">
+            <div class="header">
+                <h1>你的评估结果</h1>
+                <p>基于你的回答生成的个性化分析</p>
+            </div>
+            
+            <div class="content-area">
+                <!-- 总分部分 -->
+                <div class="result-header">
+                    <div class="result-title">总熵值</div>
+                    <div class="score-display">
+                        <span class="score-number" id="totalScore">0</span>
+                        <span class="score-label">/ 160</span>
+                    </div>
+                    <div class="score-badge" id="scoreStatus">计算中...</div>
+                </div>
+
+                <!-- 主维度 -->
+                <div class="dimension-grid">
+                    <div class="dimension-card" id="mindsetCard">
+                        <div class="dimension-title">思维倾向</div>
+                        <div class="dimension-value" id="mindsetScore">0</div>
+                        <div class="dimension-badge" id="mindsetType">分析中</div>
+                    </div>
+                    <div class="dimension-card" id="actionCard">
+                        <div class="dimension-title">做功倾向</div>
+                        <div class="dimension-value" id="actionScore">0</div>
+                        <div class="dimension-badge" id="actionType">分析中</div>
+                    </div>
+                </div>
+
+                <!-- 子维度 -->
+                <div class="subdimensions-section">
+                    <div class="subdimensions-title">五维详细分析</div>
+                    <div class="subdimension-item">
+                        <span class="subdimension-name">🎯 封闭性（目标感、自我效能感）</span>
+                        <span class="subdimension-score" id="closednessScore">0</span>
+                    </div>
+                    <div class="subdimension-item">
+                        <span class="subdimension-name">⚖️ 平衡态（回避挑战、拒绝改变）</span>
+                        <span class="subdimension-score" id="balanceScore">0</span>
+                    </div>
+                    <div class="subdimension-item">
+                        <span class="subdimension-name">💪 高线性（坚毅特质、过程导向）</span>
+                        <span class="subdimension-score" id="linearityScore">0</span>
+                    </div>
+                    <div class="subdimension-item">
+                        <span class="subdimension-name">🌊 内心失序（情绪敏感、反脆弱）</span>
+                        <span class="subdimension-score" id="disorderScore">0</span>
+                    </div>
+                    <div class="subdimension-item">
+                        <span class="subdimension-name">🎯 能量失焦（专注力、逆商）</span>
+                        <span class="subdimension-score" id="focusScore">0</span>
+                    </div>
+                </div>
+
+                <!-- 雷达图 -->
+                <div class="chart-section">
+                    <div class="chart-title">📊 五维雷达图</div>
+                    <canvas class="radar-canvas" id="radarChart"></canvas>
+                </div>
+
+                <!-- 人格类型 -->
+                <div class="personality-section" id="personalitySection">
+                    <div class="personality-label">你的成长型人格</div>
+                    <div class="personality-name" id="typeName">分析中...</div>
+                    <div class="personality-desc" id="typeDescription">分析中...</div>
+                </div>
+
+                <button class="btn-primary" onclick="restartAssessment()">🔄 重新评估</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 32个问题
+        const questions = [
+            "我感到每天都在朝自己的目标迈进",
+            "有麻烦的时候，我通常能想到一些应付的方法",
+            "一些技能 (比如跑步、演讲、写作)，即使我再努力，也不会学得多好",
+            "我认为逆境有时候是对成长的一种帮助",
+            "当一个有难度的工作需要人做时，我不希望那人是我",
+            "我不喜欢所有新鲜且经常变化的事",
+            "无论是什么事情，一旦开始了我就会坚持下去直至完成",
+            "我觉得与结果相比，做一件事的过程更能够帮助人成长",
+            "当得知一个坏消息时，我的情绪通常会比其他人更激烈",
+            "我经常试图摆脱脑海中一些不必要的想法",
+            "我总是需要克制自己想要一直休闲、娱乐、放松的欲望",
+            "失败总是让我在相当长一段时间内感到气馁",
+            "我在工作或学习时，脑子里常会想到其他不相干的事情",
+            "我常常能在自己所做的事情中找到乐趣",
+            "当被迫在压力下工作时，我感到心烦意乱又极不情愿",
+            "当碰到一个没有把握解决的难题时，我会非常兴奋、快乐",
+            "我知道自己现在是为了什么而努力",
+            "我相信自己能有效应对任何生活中突发的意外",
+            "不管我所做的事成绩好坏，我都从不怀疑自己的学习能力",
+            "经历挫折后我一般会变得更加成熟和有经验",
+            "我不喜欢做那些我不知道能否顺利完成的事",
+            "我不喜欢在不熟悉的环境中做事",
+            "我喜欢那种需要全力以赴才能完成的工作",
+            "不管一件事的结果如何，我相信自己在过程中付出的努力是不会白费的",
+            "每次有情绪波动的时候，我都能第一时间觉察",
+            "我常常试着不去想、也不和人讨论让我烦恼的事情",
+            "我经常得抵抗美食的诱惑",
+            "我一般要过很久才能忘记不愉快的事情",
+            "我总是忍不住做了一些事后会后悔的事情",
+            "只要是能获得满足感的工作，哪怕没有报酬我也愿意做",
+            "面对压力时，我会思考自己做了什么事情要承受这些",
+            "面对的事越困难，我越能集中自己的全部精力去面对"
+        ];
+
+        // 选项（完全不符=1，完全符合=5）
+        const optionLabels = ["完全不符", "不太符合", "一般", "比较符合", "完全符合"];
+
+        // 题目计分方向：true=负向题目（分数越低越好），false=正向题目（分数越高越好）
+        const questionDirections = [
+            true,   // Q1: 负向
+            false,  // Q2: 正向
+            false,  // Q3: 正向
+            true,   // Q4: 负向
+            false,  // Q5: 正向
+            false,  // Q6: 正向
+            true,   // Q7: 负向
+            true,   // Q8: 负向
+            false,  // Q9: 正向
+            false,  // Q10: 正向
+            false,  // Q11: 正向
+            false,  // Q12: 正向
+            true,   // Q13: 负向
+            true,   // Q14: 负向
+            false,  // Q15: 正向
+            true,   // Q16: 负向
+            true,   // Q17: 负向
+            true,   // Q18: 负向
+            false,  // Q19: 正向
+            true,   // Q20: 负向
+            false,  // Q21: 正向
+            false,  // Q22: 正向
+            true,   // Q23: 负向
+            true,   // Q24: 负向
+            false,  // Q25: 正向
+            false,  // Q26: 正向
+            false,  // Q27: 正向
+            false,  // Q28: 正向
+            false,  // Q29: 正向
+            true,   // Q30: 负向
+            false,  // Q31: 正向
+            true    // Q32: 负向
+        ];
+
+        // 全局状态
+        let userAnswers = new Array(32).fill(null); // 存储1-5的选项值
+        let currentQuestionIndex = 0;
+
+        // 页面切换
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // 开始评估
+        function startAssessment() {
+            showPage('assessmentPage');
+            renderQuestion();
+        }
+
+        // 渲染当前问题
+        function renderQuestion() {
+            const questionText = questions[currentQuestionIndex];
+            const currentAnswer = userAnswers[currentQuestionIndex];
+
+            let html = `
+                <div class="question-header">
+                    <div class="question-badge">${currentQuestionIndex + 1}</div>
+                    <div class="question-text">${questionText}</div>
+                </div>
+                <div class="options-container">
+            `;
+
+            for (let i = 0; i < optionLabels.length; i++) {
+                const isSelected = currentAnswer === (i + 1);
+                html += `
+                    <div class="option-item ${isSelected ? 'selected' : ''}" onclick="selectOption(${i + 1})">
+                        <div class="option-radio"></div>
+                        <span>${optionLabels[i]}</span>
+                    </div>
+                `;
+            }
+
+            html += `</div>`;
+            document.getElementById('questionCard').innerHTML = html;
+
+            // 更新进度
+            updateProgress();
+            updateNavButtons();
+        }
+
+        // 选择选项
+        function selectOption(value) {
+            userAnswers[currentQuestionIndex] = value;
+            renderQuestion(); // 重新渲染以显示选中状态
+        }
+
+        // 更新进度条
+        function updateProgress() {
+            const answered = userAnswers.filter(a => a !== null).length;
+            const percent = Math.round((answered / 32) * 100);
+            document.getElementById('progressText').textContent = `题目 ${currentQuestionIndex + 1} / 32`;
+            document.getElementById('progressPercent').textContent = `${percent}%`;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+        }
+
+        // 更新导航按钮
+        function updateNavButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.textContent = currentQuestionIndex === 31 ? '提交评估' : '下一题';
+        }
+
+        // 下一题
+        function nextQuestion() {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert('请先选择一个选项');
+                return;
+            }
+
+            if (currentQuestionIndex < 31) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                calculateAndShowResults();
+            }
+        }
+
+        // 上一题
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        // 计算单个题目的得分（考虑题目方向）
+        function getQuestionScore(questionIdx, answerValue) {
+            // 负向题目：完全不符(1)→5分，完全符合(5)→1分
+            // 正向题目：完全不符(1)→1分，完全符合(5)→5分
+            if (questionDirections[questionIdx]) {
+                return 6 - answerValue; // 负向题目，反转分数
+            } else {
+                return answerValue; // 正向题目，直接使用
+            }
+        }
+
+        // 计算并显示结果
+        function calculateAndShowResults() {
+            // 计算所有题目的得分
+            const scores = userAnswers.map((answer, idx) => getQuestionScore(idx, answer));
+
+            // 1. 总分
+            const totalScore = scores.reduce((sum, s) => sum + s, 0);
+            document.getElementById('totalScore').textContent = totalScore;
+
+            // 总分状态
+            let statusClass, statusText;
+            if (totalScore >= 128) {
+                statusClass = 'badge-high';
+                statusText = '高段位';
+            } else if (totalScore >= 65) {
+                statusClass = 'badge-medium';
+                statusText = '中段位';
+            } else {
+                statusClass = 'badge-low';
+                statusText = '低段位';
+            }
+            const statusEl = document.getElementById('scoreStatus');
+            statusEl.className = 'score-badge ' + statusClass;
+            statusEl.textContent = statusText;
+
+            // 2. 封闭程度（题目1-8, 17-24）索引：0-7, 16-23
+            const closednessQuestions = [0,1,2,3,4,5,6,7,16,17,18,19,20,21,22,23];
+            const closednessScore = closednessQuestions.reduce((sum, idx) => sum + scores[idx], 0);
+
+            // 3. 做功阻力（题目9-16, 25-32）索引：8-15, 24-31
+            const resistanceQuestions = [8,9,10,11,12,13,14,15,24,25,26,27,28,29,30,31];
+            const resistanceScore = resistanceQuestions.reduce((sum, idx) => sum + scores[idx], 0);
+
+            // 显示主维度
+            updateMainDimension('mindset', closednessScore, '成长型', '固化型');
+            updateMainDimension('action', resistanceScore, '增效型', '内耗型');
+
+            // 4. 五个子维度
+            // 封闭性：Q1-4, Q17-20 (0-3, 16-19)
+            const closednessSubQs = [0,1,2,3,16,17,18,19];
+            const closednessSubAvg = closednessSubQs.reduce((sum, idx) => sum + scores[idx], 0) / 8;
+
+            // 平衡态：Q5-6, Q21-22 (4-5, 20-21)
+            const balanceQs = [4,5,20,21];
+            const balanceAvg = balanceQs.reduce((sum, idx) => sum + scores[idx], 0) / 4;
+
+            // 高线性：Q7-8, Q23-24 (6-7, 22-23)
+            const linearityQs = [6,7,22,23];
+            const linearityAvg = linearityQs.reduce((sum, idx) => sum + scores[idx], 0) / 4;
+
+            // 内心失序：Q9-12, Q25-28 (8-11, 24-27)
+            const disorderQs = [8,9,10,11,24,25,26,27];
+            const disorderAvg = disorderQs.reduce((sum, idx) => sum + scores[idx], 0) / 8;
+
+            // 能量失焦：Q13-16, Q29-32 (12-15, 28-31)
+            const focusQs = [12,13,14,15,28,29,30,31];
+            const focusAvg = focusQs.reduce((sum, idx) => sum + scores[idx], 0) / 8;
+
+            // 显示子维度
+            document.getElementById('closednessScore').textContent = closednessSubAvg.toFixed(1);
+            document.getElementById('balanceScore').textContent = balanceAvg.toFixed(1);
+            document.getElementById('linearityScore').textContent = linearityAvg.toFixed(1);
+            document.getElementById('disorderScore').textContent = disorderAvg.toFixed(1);
+            document.getElementById('focusScore').textContent = focusAvg.toFixed(1);
+
+            // 绘制雷达图
+            setTimeout(() => {
+                drawRadarChart([closednessSubAvg, balanceAvg, linearityAvg, disorderAvg, focusAvg]);
+            }, 100);
+
+            // 确定人格类型
+            const isGrowthMindset = closednessScore < 40;
+            const isEffectiveAction = resistanceScore < 40;
+            updatePersonalityType(isGrowthMindset, isEffectiveAction);
+
+            // 显示结果页面
+            showPage('resultsPage');
+            window.scrollTo(0, 0);
+        }
+
+        // 更新主维度显示
+        function updateMainDimension(type, score, positiveLabel, negativeLabel) {
+            const isPositive = score < 40;
+            const card = document.getElementById(type + 'Card');
+            const scoreEl = document.getElementById(type + 'Score');
+            const badgeEl = document.getElementById(type + 'Type');
+
+            scoreEl.textContent = score;
+            badgeEl.textContent = isPositive ? positiveLabel : negativeLabel;
+
+            card.classList.remove('positive', 'negative');
+            card.classList.add(isPositive ? 'positive' : 'negative');
+
+            badgeEl.classList.remove('badge-green', 'badge-red');
+            badgeEl.classList.add(isPositive ? 'badge-green' : 'badge-red');
+        }
+
+        // 更新人格类型
+        function updatePersonalityType(isGrowthMindset, isEffectiveAction) {
+            let name, desc;
+            if (isGrowthMindset && isEffectiveAction) {
+                name = '🐬 海豚型';
+                desc = '高开放、低内阻。能够不断扩大伸展圈，目标清晰，认知能量集中。享受过程，内心充满弹性。';
+            } else if (isGrowthMindset && !isEffectiveAction) {
+                name = '🦥 树懒型';
+                desc = '高开放、高内阻。想跨入伸展圈，但行动力差。目标清晰，但认知能量涣散。注重过程，但内心缺乏弹性。';
+            } else if (!isGrowthMindset && isEffectiveAction) {
+                name = '🦏 犀牛型';
+                desc = '低开放、低内阻。满足于在舒适圈内"勤奋"。认知能量旺盛，但没有目标。内心弹性强，但只看重结果。';
+            } else {
+                name = '🦐 海鞘型';
+                desc = '低开放、高内阻。沉溺于舒适圈，拒绝变化和挑战。目标混乱或缺失，认知能量枯竭。充满消极认知，内心非常脆弱。';
+            }
+
+            document.getElementById('typeName').textContent = name;
+            document.getElementById('typeDescription').textContent = desc;
+        }
+
+        // 绘制雷达图的完整实现
+        function drawRadarChart(data) {
+            const canvas = document.getElementById('radarChart');
+            const ctx = canvas.getContext('2d');
+
+            const size = 300;
+            canvas.width = size * 2;
+            canvas.height = size * 2;
+            canvas.style.width = '100%';
+            canvas.style.maxWidth = '300px';
+            ctx.scale(2, 2);
+
+            const centerX = size / 2;
+            const centerY = size / 2;
+            const radius = size / 2 - 40;
+            const labels = ['封闭性', '平衡态', '高线性', '内心失序', '能量失焦'];
+            const numSides = 5;
+
+            // 1. 绘制背景网格
+            ctx.strokeStyle = '#e0e0e0';
+            for (let i = 1; i <= 5; i++) {
+                ctx.beginPath();
+                for (let j = 0; j <= numSides; j++) {
+                    const angle = (Math.PI * 2 * j) / numSides - Math.PI / 2;
+                    const r = (radius * i) / 5;
+                    ctx.lineTo(centerX + r * Math.cos(angle), centerY + r * Math.sin(angle));
+                }
+                ctx.stroke();
+            }
+
+            // 2. 绘制数据区域
+            ctx.beginPath();
+            ctx.fillStyle = 'rgba(102, 126, 234, 0.5)';
+            ctx.strokeStyle = '#667eea';
+            ctx.lineWidth = 2;
+            for (let i = 0; i <= numSides; i++) {
+                const angle = (Math.PI * 2 * i) / numSides - Math.PI / 2;
+                // 将1-5分映射到半径上
+                const val = data[i % numSides] || 0;
+                const r = (radius * val) / 5;
+                const x = centerX + r * Math.cos(angle);
+                const y = centerY + r * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.fill();
+            ctx.stroke();
+
+            // 3. 绘制标签
+            ctx.fillStyle = '#666';
+            ctx.font = '12px Arial';
+            for (let i = 0; i < numSides; i++) {
+                const angle = (Math.PI * 2 * i) / numSides - Math.PI / 2;
+                const x = centerX + (radius + 20) * Math.cos(angle);
+                const y = centerY + (radius + 20) * Math.sin(angle);
+                ctx.fillText(labels[i], x - 15, y);
+            }
+        }
+
+        // 重新评估功能
+        function restartAssessment() {
+            userAnswers = new Array(32).fill(null);
+            currentQuestionIndex = 0;
+            showPage('startPage');
+        }
+    </script>
+</body>
+</html>
