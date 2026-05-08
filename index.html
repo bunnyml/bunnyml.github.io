@@ -19,10 +19,15 @@
 
   [data-theme="dark"] {
     --bg-base: #0b1020;
+    --bg-gradient:
+      radial-gradient(ellipse at 12% 8%, rgba(76, 29, 149, 0.30) 0%, transparent 55%),
+      radial-gradient(ellipse at 88% 12%, rgba(30, 58, 138, 0.28) 0%, transparent 55%),
+      radial-gradient(ellipse at 70% 92%, rgba(131, 24, 67, 0.22) 0%, transparent 55%);
     --blob-1: #4c1d95;
     --blob-2: #1e3a8a;
     --blob-3: #831843;
     --blob-4: #134e4a;
+    --blob-opacity: 0.55;
     --glass-bg: rgba(20, 27, 50, 0.42);
     --glass-bg-strong: rgba(20, 27, 50, 0.62);
     --glass-border: rgba(255, 255, 255, 0.08);
@@ -38,11 +43,18 @@
   }
 
   [data-theme="light"] {
-    --bg-base: #eef2f8;
+    --bg-base: #f5f3ff;
+    --bg-gradient:
+      radial-gradient(ellipse at 0% 0%, rgba(196, 181, 253, 0.55) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 0%, rgba(147, 197, 253, 0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 100% 100%, rgba(251, 207, 232, 0.5) 0%, transparent 55%),
+      radial-gradient(ellipse at 0% 100%, rgba(153, 246, 228, 0.45) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 50%, rgba(254, 240, 138, 0.18) 0%, transparent 70%);
     --blob-1: #c4b5fd;
     --blob-2: #93c5fd;
     --blob-3: #fbcfe8;
     --blob-4: #99f6e4;
+    --blob-opacity: 0.7;
     --glass-bg: rgba(255, 255, 255, 0.55);
     --glass-bg-strong: rgba(255, 255, 255, 0.78);
     --glass-border: rgba(255, 255, 255, 0.7);
@@ -65,13 +77,18 @@
     min-height: 100vh;
     font-family: var(--font-sans);
     color: var(--text-1);
-    background: var(--bg-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color var(--transition), color var(--transition);
   }
 
-  body { overflow-x: hidden; }
+  body {
+    overflow-x: hidden;
+    background-color: var(--bg-base);
+    background-image: var(--bg-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+  }
 
   /* 背景毛玻璃需要的彩色色块 */
   .bg-blobs {
